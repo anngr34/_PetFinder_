@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppButton" parent="@style/Widget.MaterialComponents.Button"></style>
+
+    <style name="AppButton.Outlined" parent="@style/Widget.MaterialComponents.Button.OutlinedButton"></style>
+
+    <style name="AppButton.Text" parent="@style/Widget.MaterialComponents.Button.TextButton"></style>
+
+    <style name="AppButton.Text.Small" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:inputType">text</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>

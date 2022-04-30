@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PawPatrol</string>
+    <string name="login_title">Login</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button_title">Login</string>
+    <string name="register_button_title">Create account</string>
+    <string name="restore_password_button_title">Forgot password?</string>
+    <string name="invalid_username">Invalid username!</string>
+    <string name="invalid_password">Invalid password!</string>
+</resources>
