@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">PawPatrol</string>
+    <string name="login_title">Login</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button_title">Login</string>
+    <string name="register_button_title">Create account</string>
+    <string name="restore_password_button_title">Forgot password?</string>
+    <string name="invalid_email">Invalid email!</string>
+    <string name="invalid_password">Invalid password!</string>
+    <string name="pet_main_attached_photo">Pet\'s main attached photo</string>
+    <string name="pet_name">Pet\'s name</string>
+    <string name="pet_short_description">Pet\'s short description</string>
+    <string name="failed_to_authenticate">Failed to authenticate!</string>
+    <string name="register_title">Register</string>
+    <string name="failed_to_register">Failed to register!</string>
+</resources>

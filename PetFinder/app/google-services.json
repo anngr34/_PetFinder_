@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "689432143769",
+    "project_id": "animalhelp-ef46b",
+    "storage_bucket": "animalhelp-ef46b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:689432143769:android:607148b67b81be7b9ed508",
+        "android_client_info": {
+          "package_name": "com.example.pawpatrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "689432143769-iq5i22o1cba1okqseh5l2m151c304rq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsG23mZEg7l67pid4VPcZC28UgkQsI5BE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "689432143769-iq5i22o1cba1okqseh5l2m151c304rq5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
