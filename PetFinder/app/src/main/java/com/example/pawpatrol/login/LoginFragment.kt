@@ -69,7 +69,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this.requireActivity()) { result ->
                     if (result.isSuccessful) {
-                        navigator.navigateToMainApp()
+                        // navigation handled externally
                     } else {
                         setInputsEnabled(true)
                         result.exception?.let {

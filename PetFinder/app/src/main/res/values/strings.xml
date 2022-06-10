@@ -14,4 +14,27 @@
     <string name="failed_to_authenticate">Failed to authenticate!</string>
     <string name="register_title">Register</string>
     <string name="failed_to_register">Failed to register!</string>
+    <string name="reset_title">Reset password</string>
+    <string name="reset_pass_button_title">Send email</string>
+    <string name="failed_to_reset_pass">Failed to send reset email!</string>
+    <string name="reset_email_sent">Reset email sent!</string>
+    <string name="profile_menu_item">Profile</string>
+    <string name="add_missing_animal_note_button_content_desc">Add missing animal note</string>
+    <string name="missing_pets_search">Missing pets</string>
+    <string name="profile">Profile</string>
+    <string name="add_note">Report missing pet</string>
+    <string name="pet_name_hint">Pet name</string>
+    <string name="description_hint">Describe yor pet, whether he had collar, where did accident happen and when etc.</string>
+    <string name="upload_image">Upload image</string>
+    <string name="create_note">Create note</string>
+    <string name="provide_pet_name">Provide pet name</string>
+    <string name="provide_description">Provide description of missing pet and circumstances</string>
+    <string name="note_created">Note created</string>
+    <string name="failed_to_create_note">Failed to create note!</string>
+    <string name="no_missing_pets">No missing pets, hurray!</string>
+    <string name="edit_user_info">Edit info</string>
+    <string name="logout">Logout</string>
+    <string name="your_notes">Your missing pets</string>
+    <string name="report_pet">Report pet to owner</string>
+    <string name="delete_note">Delete note</string>
 </resources>
