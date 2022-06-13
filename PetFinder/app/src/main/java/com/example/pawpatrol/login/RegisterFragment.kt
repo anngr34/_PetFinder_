@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     companion object {
-        val TAG = "RegisterFragment"
+        const val TAG = "RegisterFragment"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

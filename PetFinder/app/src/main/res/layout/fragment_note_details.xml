@@ -14,7 +14,15 @@
             android:id="@+id/pet_image_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:scaleType="centerInside"
             tools:src="@drawable/ic_launcher_foreground" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map_fragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/note_description"
@@ -28,15 +36,33 @@
             style="@style/AppButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/report_pet" />
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:text="@string/report_pet"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/see_reports"
+            style="@style/AppButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="@string/see_reports"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/delete_button"
-            android:visibility="gone"
             style="@style/AppButton.Outlined"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/delete_note" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="@string/delete_note"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
     </LinearLayout>
 

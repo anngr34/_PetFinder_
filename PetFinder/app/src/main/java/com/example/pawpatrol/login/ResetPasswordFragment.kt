@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 class ResetPasswordFragment : Fragment(R.layout.reset_pass_fragment) {
 
     companion object {
-        val TAG = "ResetPasswordFragment"
+        const val TAG = "ResetPasswordFragment"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

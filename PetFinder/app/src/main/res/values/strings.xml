@@ -23,6 +23,7 @@
     <string name="missing_pets_search">Missing pets</string>
     <string name="profile">Profile</string>
     <string name="add_note">Report missing pet</string>
+    <string name="edit_note">Edit note on pet</string>
     <string name="pet_name_hint">Pet name</string>
     <string name="description_hint">Describe yor pet, whether he had collar, where did accident happen and when etc.</string>
     <string name="upload_image">Upload image</string>
@@ -31,10 +32,23 @@
     <string name="provide_description">Provide description of missing pet and circumstances</string>
     <string name="note_created">Note created</string>
     <string name="failed_to_create_note">Failed to create note!</string>
+    <string name="failed_to_upload_image">Failed to upload image!</string>
     <string name="no_missing_pets">No missing pets, hurray!</string>
     <string name="edit_user_info">Edit info</string>
     <string name="logout">Logout</string>
     <string name="your_notes">Your missing pets</string>
     <string name="report_pet">Report pet to owner</string>
     <string name="delete_note">Delete note</string>
+    <string name="please_attach_image">Please attach image</string>
+    <string name="report_description_hint">Describe where you saw this pet</string>
+    <string name="attach_photo">Attach photo</string>
+    <string name="send_report">Send report</string>
+    <string name="failed_to_send_report">Failed to send report</string>
+    <string name="report_sent">Report sent successfully!</string>
+    <string name="see_reports">See reports</string>
+    <string name="no_reports">No reports</string>
+    <string name="pet_position">Pet position</string>
+    <string name="note_edited">Note edited!</string>
+    <string name="failed_to_edit_note">Failed to edit note!</string>
+    <string name="edit_menu_item">Edit note</string>
 </resources>

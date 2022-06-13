@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/content_root">
+    android:id="@+id/content_root"
+    android:background="@color/light_skin">
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

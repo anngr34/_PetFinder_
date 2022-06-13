@@ -5,7 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pawpatrol.R
-import com.example.pawpatrol.data.FirebaseDatabaseHolder
+import com.example.pawpatrol.app.PawApplication
+import com.example.pawpatrol.data.FirebaseHolder
 import com.example.pawpatrol.missing.MissingPetNote
 import com.example.pawpatrol.missing.NotesAdapter
 import com.example.pawpatrol.navigation.DefaultNavigator
@@ -19,10 +20,11 @@ import timber.log.Timber
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     companion object {
-        val TAG = "ProfileFragment"
+        const val TAG = "ProfileFragment"
     }
 
     private val selfNotesAdapter = NotesAdapter(
+        glide = PawApplication.instance.glide,
         navigateToNoteDetails = { authorId, noteId ->
             DefaultNavigator.getInstance(this).navigateToNoteDetails(authorId, noteId)
         }
@@ -47,7 +49,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         requireActivity().actionBar?.title = getString(R.string.profile)
 
-        dbRef = FirebaseDatabaseHolder.missingPetsForProfile.apply {
+        dbRef = FirebaseHolder.missingPetsForProfile.apply {
             dbListener = addValueEventListener(object : ValueEventListener {
 
                 override fun onDataChange(missingPetsForProfileSnapshot: DataSnapshot) {
@@ -55,11 +57,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     val notes =
                         missingPetsForProfileSnapshot.children.mapNotNull { missingNoteSnapshot ->
                             val noteId: String = missingNoteSnapshot.key ?: return@mapNotNull null
-                            MissingPetNote.fromJson(
-                                userId = userId,
-                                noteId = noteId,
-                                json = missingNoteSnapshot.value as Map<String, Any?>
-                            )
+                            (missingNoteSnapshot.value as? Map<String, Any?>)?.let {
+                                MissingPetNote.fromJson(
+                                    userId = userId,
+                                    noteId = noteId,
+                                    json = it
+                                )
+                            }
                         }
 
                     selfNotesAdapter.update(notes)

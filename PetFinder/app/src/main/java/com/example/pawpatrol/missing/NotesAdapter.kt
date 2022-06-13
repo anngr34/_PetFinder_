@@ -3,9 +3,11 @@ package com.example.pawpatrol.missing
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.RequestManager
 import com.example.pawpatrol.R
 
 class NotesAdapter(
+    private val glide: RequestManager,
     private val navigateToNoteDetails: (String, String) -> Unit
 ) : RecyclerView.Adapter<NoteViewHolder>() {
 
@@ -23,7 +25,7 @@ class NotesAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.missing_pet_item, parent, false)
-        return NoteViewHolder(view)
+        return NoteViewHolder(view, glide)
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
@@ -35,6 +37,7 @@ class NotesAdapter(
     }
 
     override fun onViewRecycled(holder: NoteViewHolder) {
+        holder.unbind()
         holder.itemView.setOnClickListener(null)
     }
 

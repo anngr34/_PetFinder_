@@ -41,6 +41,8 @@
             android:contentDescription="@string/pet_short_description"
             android:gravity="start"
             android:textSize="14sp"
+            android:maxLines="4"
+            android:ellipsize="end"
             app:layout_constraintEnd_toEndOf="@+id/pet_name"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/pet_name"

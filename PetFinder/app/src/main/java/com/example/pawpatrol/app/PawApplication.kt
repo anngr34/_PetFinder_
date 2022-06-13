@@ -1,7 +1,9 @@
 package com.example.pawpatrol.app
 
 import android.app.Application
-import com.example.pawpatrol.BuildConfig
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
+import com.firebase.ui.storage.BuildConfig
 import timber.log.Timber
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -23,6 +25,10 @@ class PawApplication : Application() {
             val name = "computation-${threadCounter.getAndIncrement()}"
             Thread(null, task, name)
         }
+    }
+
+    val glide: RequestManager by lazy {
+        Glide.with(this)
     }
 
     override fun onCreate() {

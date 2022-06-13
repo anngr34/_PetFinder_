@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="attached_photo_size">72dp</dimen>
+    <dimen name="attached_photo_item_margin">8dp</dimen>
+    <!--    attached_photo_size + 2 * attached_photo_item_margin-->
+    <dimen name="attached_photos_recycler_view_height">88dp</dimen>
+</resources>

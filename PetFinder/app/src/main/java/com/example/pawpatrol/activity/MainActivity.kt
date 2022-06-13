@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(), FirebaseAuth.AuthStateListener {
     override fun onBackPressed() {
         val handled = DefaultNavigator.getInstance(this).navigateBack()
         if (!handled) {
-            super.onBackPressed()
+            finish()
         }
     }
 }

@@ -9,10 +9,13 @@ import com.example.pawpatrol.login.LoginFragment
 import com.example.pawpatrol.login.RegisterFragment
 import com.example.pawpatrol.login.ResetPasswordFragment
 import com.example.pawpatrol.main.MainFragment
+import com.example.pawpatrol.missing.MissingPetNote
 import com.example.pawpatrol.missing.MissingPetNoteCreationFragment
-import com.example.pawpatrol.profile.ProfileFragment
 import com.example.pawpatrol.missing.SearchAnimalsFragment
+import com.example.pawpatrol.notedetails.CreateReportFragment
 import com.example.pawpatrol.notedetails.NoteDetailsFragment
+import com.example.pawpatrol.notedetails.ReportsToNoteFragment
+import com.example.pawpatrol.profile.ProfileFragment
 import timber.log.Timber
 
 class DefaultNavigator(
@@ -24,18 +27,42 @@ class DefaultNavigator(
         get() = fragmentManager.findFragmentByTag(MainFragment.TAG)
 
     override fun navigateToMainApp() {
-        Timber.d("navigateToMainApp")
+        Timber.d("try navigateToMainApp")
+        if (hostFragment != null) {
+            Timber.d("already in main part, ignore")
+            return
+        }
+        if (fragmentManager.backStackEntryCount > 0) {
+            Timber.d("pop login flow")
+            fragmentManager.popBackStack(
+                LoginFragment.TAG,
+                FragmentManager.POP_BACK_STACK_INCLUSIVE
+            )
+        }
+
+        Timber.d("schedule navigateToMainApp")
         fragmentManager
             .beginTransaction()
-            .replace(contentRootId, MainFragment(), MainFragment.TAG)
+            .add(contentRootId, MainFragment(), MainFragment.TAG)
+            .addToBackStack(MainFragment.TAG)
             .commitAllowingStateLoss()
     }
 
     override fun navigateToLogin() {
-        Timber.d("navigateToLogin")
+        Timber.d("try navigateToLogin")
+        if (fragmentManager.backStackEntryCount > 0 && fragmentManager.getBackStackEntryAt(0).name == LoginFragment.TAG) {
+            return
+        }
+        if (fragmentManager.backStackEntryCount > 0) {
+            Timber.d("pop main flow")
+            fragmentManager.popBackStack(MainFragment.TAG, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
+
+        Timber.d("schedule navigateToLogin")
         fragmentManager
             .beginTransaction()
-            .replace(contentRootId, LoginFragment(), LoginFragment.TAG)
+            .add(contentRootId, LoginFragment(), LoginFragment.TAG)
+            .addToBackStack(LoginFragment.TAG)
             .commitAllowingStateLoss()
     }
 
@@ -59,38 +86,37 @@ class DefaultNavigator(
 
     override fun navigateBack(): Boolean {
         Timber.d("navigateBack")
-        val internalPagePopped = internalPop()
-        return if (!internalPagePopped) {
+        val mainFlowPopped = mainFlowPop()
+        return if (!mainFlowPopped) {
             externalPop()
         } else {
             true
         }
     }
 
-    private fun externalPop(): Boolean {
-        Timber.d("externalPop")
-        return if (fragmentManager.backStackEntryCount >= 1) {
-            Timber.d("externalPop scheduled")
-            fragmentManager.popBackStack()
+    private fun mainFlowPop(): Boolean {
+        Timber.d("try mainFlowPop")
+        val mainFragment = hostFragment ?: return false
+
+        val childFm = mainFragment.childFragmentManager
+        return if (childFm.backStackEntryCount > 1) {
+            Timber.d("schedule mainFlowPop")
+            childFm.popBackStack()
             true
         } else {
+            Timber.d("nothing to pop in main flow")
             false
         }
     }
 
-    private fun internalPop(): Boolean {
-        Timber.d("internalPop")
-        val mainFragment = hostFragment
-        return if (mainFragment != null) {
-            val childFm = mainFragment.childFragmentManager
-            if (childFm.backStackEntryCount > 1) {
-                Timber.d("internalPop scheduled")
-                childFm.popBackStack()
-                true
-            } else {
-                false
-            }
+    private fun externalPop(): Boolean {
+        Timber.d("try externalPop")
+        return if (fragmentManager.backStackEntryCount > 1) {
+            Timber.d("schedule externalPop")
+            fragmentManager.popBackStack()
+            true
         } else {
+            Timber.d("nothing to pop externally")
             false
         }
     }
@@ -132,7 +158,7 @@ class DefaultNavigator(
                 .beginTransaction()
                 .replace(
                     R.id.under_toolbar_content,
-                    MissingPetNoteCreationFragment(),
+                    MissingPetNoteCreationFragment.newInstance(),
                     MissingPetNoteCreationFragment.TAG
                 )
                 .addToBackStack(MissingPetNoteCreationFragment.TAG)
@@ -158,6 +184,50 @@ class DefaultNavigator(
 
     override fun navigateToReportCreation(noteId: String) {
         Timber.d("navigateToReportCreation")
+        hostFragment?.run {
+            val fragment = CreateReportFragment.newInstance(noteId)
+            childFragmentManager
+                .beginTransaction()
+                .replace(
+                    R.id.under_toolbar_content,
+                    fragment,
+                    CreateReportFragment.TAG
+                )
+                .addToBackStack(CreateReportFragment.TAG)
+                .commit()
+        }
+    }
+
+    override fun navigateToReports(noteId: String) {
+        Timber.d("navigateToReports")
+        hostFragment?.run {
+            val fragment = ReportsToNoteFragment.newInstance(noteId)
+            childFragmentManager
+                .beginTransaction()
+                .replace(
+                    R.id.under_toolbar_content,
+                    fragment,
+                    ReportsToNoteFragment.TAG
+                )
+                .addToBackStack(ReportsToNoteFragment.TAG)
+                .commit()
+        }
+    }
+
+    override fun navigateToNoteEdit(note: MissingPetNote) {
+        Timber.d("navigateToNoteEdit")
+        hostFragment?.run {
+            val fragment = MissingPetNoteCreationFragment.newInstance(note)
+            childFragmentManager
+                .beginTransaction()
+                .replace(
+                    R.id.under_toolbar_content,
+                    fragment,
+                    MissingPetNoteCreationFragment.TAG
+                )
+                .addToBackStack(MissingPetNoteCreationFragment.TAG)
+                .commit()
+        }
     }
 
     companion object {
